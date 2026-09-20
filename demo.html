@@ -147,6 +147,50 @@
             font-size: 12px; color: var(--dim); }
   footer p { margin: 0 0 4px; }
 
+
+  /* --- Hoi thu --- */
+  .ask { background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+          padding: 20px; box-shadow: var(--shadow); display: flex;
+          flex-direction: column; gap: 14px; }
+  .status { display: flex; align-items: center; gap: 8px; font-size: 12px;
+             color: var(--ink-soft); }
+  .dot { width: 8px; height: 8px; border-radius: 99px; background: var(--dim); flex: none; }
+  .dot.live { background: var(--good); }
+  .dot.off { background: var(--warn); }
+  .ask-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .ask-row input[type="text"] { flex: 1 1 320px; min-width: 0; padding: 11px 14px;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--ground);
+    color: var(--ink); font: inherit; }
+  .ask-row select { padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--ground); color: var(--ink); font: inherit; }
+  .ask-row button { padding: 11px 22px; border: none; border-radius: 8px;
+    background: var(--accent); color: var(--surface); font: inherit; font-weight: 600;
+    cursor: pointer; }
+  .ask-row button:disabled { opacity: .5; cursor: default; }
+  input:focus-visible, select:focus-visible, button:focus-visible, .sug:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px; }
+  .sugs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sug { font: inherit; font-size: 12px; padding: 5px 12px; border-radius: 99px;
+    border: 1px solid var(--line); background: var(--ground); color: var(--ink-soft);
+    cursor: pointer; text-align: left; }
+  .sug:hover { border-color: var(--accent); color: var(--accent); }
+  .answer { background: var(--accent-soft); border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0; padding: 14px 18px; }
+  .answer h4 { margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--accent); }
+  .answer p { margin: 0; white-space: pre-wrap; }
+  .hits { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+  .hit { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+  .hit-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 6px; font-size: 11px; }
+  .rank { font-weight: 600; color: var(--dim);
+    font-family: "JetBrains Mono", monospace; }
+  .hit p { margin: 0; font-size: 13px; color: var(--ink-soft); }
+  .warnbox { background: var(--warn-soft); border-left: 3px solid var(--warn);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 13px;
+    margin-bottom: 14px; }
+  .warnbox code { font-family: "JetBrains Mono", monospace; font-size: 12px; }
+
   @media (max-width: 720px) {
     .thesis, .ab { grid-template-columns: 1fr; }
     table { min-width: 560px; }
@@ -375,6 +419,128 @@
       <span class="mono">0.8600</span>. Cosine mã hoá chủ đề, không mã hoá phủ định hay chủ thể —
       những khác biệt đó buộc phải đưa vào metadata.</p>
   </section>
+
+
+  <section>
+    <h2><span class="n">06</span>Hỏi thử kho tri thức</h2>
+    <p class="lede">Chạy trực tiếp <span class="mono">EmbeddingStore</span> và
+      <span class="mono">KnowledgeBaseAgent</span> trong <span class="mono">src/</span>,
+      chiến lược <span class="mono">FixedSizeChunker(300, 50)</span>.</p>
+
+    <div class="ask">
+      <p class="status"><span class="dot" id="dot"></span><span id="status">Đang kiểm tra server…</span></p>
+
+      <form class="ask-row" id="form">
+        <input type="text" id="cauhoi" autocomplete="off"
+               placeholder="Ví dụ: Bao lâu thì được yêu cầu trả hàng hoàn tiền?">
+        <select id="loc" aria-label="Lọc theo đối tượng">
+          <option value="">Không lọc</option>
+          <option value="buyer">audience = buyer</option>
+          <option value="seller">audience = seller</option>
+          <option value="both">audience = both</option>
+        </select>
+        <button type="submit" id="nut">Hỏi</button>
+      </form>
+
+      <div class="sugs" id="sugs"></div>
+      <div id="ketqua"></div>
+    </div>
+  </section>
+
+<script>
+(function () {
+  var DUNG_SAN = [{"cau_hoi": "Quy định về kích thước và trọng lượng tối đa của kiện hàng đối với dịch vụ SPX Instant là bao nhiêu?", "loc": null, "top": [{"doc_id": "ecom-shopee-co-check", "score": 0.7595, "content": "p dụng đối với các đơn hàng nội tỉnh. Tham khảo ngay các khu vực hoạt động của SPX Instant  Đối với SPX: thuộc..."}, {"doc_id": "ecom-shopee-co-check", "score": 0.7575, "content": "của SPX Instant  để được hỗ trợ xác minh đơn hàng.     ⚠️ Lưu ý: SPX Instant và SPX là 2 nhà vận chuyển khác ..."}, {"doc_id": "ecom-shopee-co-check", "score": 0.7457, "content": "p tức” được triển khai nhờ sự kết hợp giữa ShopeeFood và Shopee, đáp ứng mong muốn nhận hàng gấp của Người mua..."}]}, {"cau_hoi": "Người mua cần lưu ý gì khi đóng gói hàng hóa hoàn trả có chứa chất lỏng hoặc dễ vỡ?", "loc": null, "top": [{"doc_id": "shopee-dong-goi-don-hoan-tra", "score": 0.8853, "content": "hình lại quá trình đóng gói hàng hoàn, nhằm đảm bảo quyền lợi khi Người bán có phát sinh khiếu nại hàng hoàn t..."}, {"doc_id": "shopee-dong-goi-don-hoan-tra", "score": 0.8071, "content": "hàng hoàn trả theo hướng dẫn của Shopee để đảm bảo an toàn cho sản phẩm bên trong tránh mất mát hoặc hư hỏng,..."}, {"doc_id": "shopee-dong-goi-don-hoan-tra", "score": 0.8007, "content": "# [Trả hàng/Hoàn tiền] Cách đóng gói đơn hàng hoàn trả  [Trả hàng/ Hoàn tiền] Cách đóng gói đơn hàng hoàn tr..."}]}, {"cau_hoi": "Người bán cần làm gì khi đơn vị vận chuyển hoàn trả hàng về kho thành công và hàng còn nguyên vẹn?", "loc": null, "top": [{"doc_id": "shopee-seller-don-giao-khong-thanh-cong", "score": 0.835, "content": "ng thành công  Trường hợp 1: Đơn hàng trả về thành công và nguyên vẹn  Chọn nhập lại vào kho trong trường hợp ..."}, {"doc_id": "shopee-seller-don-giao-khong-thanh-cong", "score": 0.8271, "content": "nhận, Người Bán chỉ cần theo dõi và nhập lại hàng vào kho khi hàng được hoàn về.  Cách xử lý đơn hàng Shopee ..."}, {"doc_id": "shopee-seller-quan-ly-don-tra-hang", "score": 0.7949, "content": "hàng thành công cho Người Bán  Hàng thất lạc/Trả không thành công: Là tình trạng hàng hoàn bị thất lạc do ĐVVC..."}]}, {"cau_hoi": "Giá trị đơn hàng tối đa áp dụng cho phương thức thanh toán COD khi sử dụng dịch vụ SPX Instant là bao nhiêu?", "loc": null, "top": [{"doc_id": "ecom-shopee-co-check", "score": 0.8323, "content": ":  Người bán và Người mua cùng thuộc thành phố Hồ Chí Minh hoặc Hà Nội tại 1 số quận/huyện nhất định  Hình thứ..."}, {"doc_id": "ecom-shopee-co-check", "score": 0.7661, "content": "của SPX Instant  để được hỗ trợ xác minh đơn hàng.     ⚠️ Lưu ý: SPX Instant và SPX là 2 nhà vận chuyển khác ..."}, {"doc_id": "ecom-shopee-co-check", "score": 0.7592, "content": "p dụng đối với các đơn hàng nội tỉnh. Tham khảo ngay các khu vực hoạt động của SPX Instant  Đối với SPX: thuộc..."}]}, {"cau_hoi": "Quy trình xử lý đơn trả hàng và quản lý hàng hoàn trả tại Kênh Quản Lý Shop được thực hiện như thế nào?", "loc": "{'audience': 'seller'}", "top": [{"doc_id": "shopee-seller-quan-ly-don-tra-hang", "score": 0.893, "content": ". Tổng quan quy trình xử lý đơn hàng trên Kênh Quản Lý Shop  Tổng quan quy trình xử lý đơn trả hàng:  1.Theo d..."}, {"doc_id": "shopee-seller-quan-ly-don-tra-hang", "score": 0.8446, "content": "i như sau:  Quản lý trạng thái đơn Trả hàng/Hoàn tiền cho nhiều Shopee Shop cùng lúc  Theo dõi hàng hoàn trả t..."}, {"doc_id": "shopee-seller-quan-ly-don-tra-hang", "score": 0.8338, "content": "# Quản lý đơn trả hàng hoàn tiền  Quản lý đơn trả hàng hoàn tiền | Shopee Trung tâm trợ giúp  Xin chào, Shop..."}]}];
+  var online = false;
+  var dot = document.getElementById("dot");
+  var status = document.getElementById("status");
+  var form = document.getElementById("form");
+  var oCauHoi = document.getElementById("cauhoi");
+  var oLoc = document.getElementById("loc");
+  var nut = document.getElementById("nut");
+  var ketqua = document.getElementById("ketqua");
+
+  function esc(t) {
+    var d = document.createElement("div");
+    d.textContent = t == null ? "" : String(t);
+    return d.innerHTML;
+  }
+
+  DUNG_SAN.forEach(function (m) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "sug";
+    b.textContent = m.cau_hoi.length > 66 ? m.cau_hoi.slice(0, 66) + "…" : m.cau_hoi;
+    b.title = m.cau_hoi;
+    b.addEventListener("click", function () {
+      oCauHoi.value = m.cau_hoi;
+      oLoc.value = m.loc ? "seller" : "";
+      if (online) form.requestSubmit(); else ve(m, true);
+    });
+    document.getElementById("sugs").appendChild(b);
+  });
+
+  fetch("/api/health").then(function (r) {
+    return r.ok ? r.json() : Promise.reject(new Error("offline"));
+  }).then(function (d) {
+    online = true;
+    dot.className = "dot live";
+    status.textContent = "Server đang chạy · " + d.chunks + " chunk · " + d.chien_luoc;
+  }).catch(function () {
+    online = false;
+    dot.className = "dot off";
+    status.textContent = "Server chưa chạy — bấm câu hỏi bên dưới để xem kết quả đã lưu.";
+    nut.disabled = true;
+    oCauHoi.placeholder = "Chạy: python demo_server.py để hỏi câu bất kỳ";
+  });
+
+  function ve(d, offline) {
+    var h = "";
+    if (offline) {
+      h += '<div class="warnbox">Kết quả đã lưu từ <code>ket_qua_benchmark.txt</code>. '
+         + 'Chạy <code>python demo_server.py</code> để hỏi câu bất kỳ.</div>';
+    }
+    if (d.tra_loi) {
+      h += '<div class="answer"><h4>Câu trả lời của agent</h4><p>'
+         + esc(d.tra_loi) + "</p></div>";
+    }
+    h += '<div class="hits">';
+    (d.top || []).forEach(function (t, i) {
+      h += '<div class="hit"><div class="hit-top">'
+        + '<span class="rank">#' + (i + 1) + "</span>"
+        + (t.audience ? '<span class="aud aud-' + esc(t.audience) + '">' + esc(t.audience) + "</span>" : "")
+        + '<span class="mono doc-id">' + esc(t.doc_id) + "</span>"
+        + '<span class="mono" style="margin-left:auto;color:var(--ink-soft)">'
+        + Number(t.score).toFixed(4) + "</span></div>"
+        + "<p>" + esc(t.content) + "</p></div>";
+    });
+    h += "</div>";
+    ketqua.innerHTML = h;
+  }
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var cauHoi = oCauHoi.value.trim();
+    if (!cauHoi || !online) return;
+    nut.disabled = true;
+    nut.textContent = "Đang hỏi…";
+    ketqua.innerHTML = '<p class="note">Đang embed câu hỏi và truy xuất…</p>';
+    fetch("/api/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cau_hoi: cauHoi, loc: oLoc.value || null })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (d.loi) ketqua.innerHTML = '<div class="warnbox">' + esc(d.loi) + "</div>";
+      else ve(d, false);
+    }).catch(function (err) {
+      ketqua.innerHTML = '<div class="warnbox">Không gọi được server: '
+        + esc(err) + "</div>";
+    }).finally(function () {
+      nut.disabled = false;
+      nut.textContent = "Hỏi";
+    });
+  });
+})();
+</script>
 
   <footer>
     <p>Sinh bằng <span class="mono">python scripts/build_demo.py</span> từ

@@ -11,6 +11,7 @@ Mo demo.html bang trinh duyet. Trang tu chua, khong can mang.
 from __future__ import annotations
 
 import html
+import json
 import re
 import sys
 from pathlib import Path
@@ -69,8 +70,9 @@ def parse_run(path: Path) -> dict:
             continue
         diem = _one(r"Điểm đánh giá câu này: (\d)/2", block)
         top3 = [
-            {"doc": d, "score": float(s)}
-            for s, d in re.findall(r"\[\d\] Score: ([-\d.]+) \| Doc: (\S+)", block)
+            {"doc": d, "score": float(sc), "preview": pv.strip()}
+            for sc, d, pv in re.findall(
+                r"\[\d\] Score: ([-\d.]+) \| Doc: (\S+) \| Preview: (.+)", block)
         ]
         run["queries"].append({
             "id": int(m.group(1)),
@@ -109,6 +111,17 @@ def bar(value: int, total: int, kind: str) -> str:
 
 def build(real: dict, mock: dict) -> str:
     delta = real["tong"] - mock["tong"]
+
+    # Ket qua dung san: dung khi khong goi duoc demo_server.py
+    dung_san = json.dumps([
+        {
+            "cau_hoi": q["cau_hoi"],
+            "loc": q["loc"],
+            "top": [{"doc_id": t["doc"], "score": t["score"], "content": t["preview"]}
+                    for t in q["top3"]],
+        }
+        for q in real["queries"]
+    ], ensure_ascii=False)
 
     # --- Bang 5 query, doi chieu mock vs that
     hang_query = []
@@ -325,6 +338,50 @@ def build(real: dict, mock: dict) -> str:
             font-size: 12px; color: var(--dim); }}
   footer p {{ margin: 0 0 4px; }}
 
+
+  /* --- Hoi thu --- */
+  .ask {{ background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+          padding: 20px; box-shadow: var(--shadow); display: flex;
+          flex-direction: column; gap: 14px; }}
+  .status {{ display: flex; align-items: center; gap: 8px; font-size: 12px;
+             color: var(--ink-soft); }}
+  .dot {{ width: 8px; height: 8px; border-radius: 99px; background: var(--dim); flex: none; }}
+  .dot.live {{ background: var(--good); }}
+  .dot.off {{ background: var(--warn); }}
+  .ask-row {{ display: flex; gap: 10px; flex-wrap: wrap; }}
+  .ask-row input[type="text"] {{ flex: 1 1 320px; min-width: 0; padding: 11px 14px;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--ground);
+    color: var(--ink); font: inherit; }}
+  .ask-row select {{ padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--ground); color: var(--ink); font: inherit; }}
+  .ask-row button {{ padding: 11px 22px; border: none; border-radius: 8px;
+    background: var(--accent); color: var(--surface); font: inherit; font-weight: 600;
+    cursor: pointer; }}
+  .ask-row button:disabled {{ opacity: .5; cursor: default; }}
+  input:focus-visible, select:focus-visible, button:focus-visible, .sug:focus-visible {{
+    outline: 2px solid var(--accent); outline-offset: 2px; }}
+  .sugs {{ display: flex; flex-wrap: wrap; gap: 8px; }}
+  .sug {{ font: inherit; font-size: 12px; padding: 5px 12px; border-radius: 99px;
+    border: 1px solid var(--line); background: var(--ground); color: var(--ink-soft);
+    cursor: pointer; text-align: left; }}
+  .sug:hover {{ border-color: var(--accent); color: var(--accent); }}
+  .answer {{ background: var(--accent-soft); border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0; padding: 14px 18px; }}
+  .answer h4 {{ margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--accent); }}
+  .answer p {{ margin: 0; white-space: pre-wrap; }}
+  .hits {{ display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }}
+  .hit {{ border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }}
+  .hit-top {{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 6px; font-size: 11px; }}
+  .rank {{ font-weight: 600; color: var(--dim);
+    font-family: "JetBrains Mono", monospace; }}
+  .hit p {{ margin: 0; font-size: 13px; color: var(--ink-soft); }}
+  .warnbox {{ background: var(--warn-soft); border-left: 3px solid var(--warn);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 13px;
+    margin-bottom: 14px; }}
+  .warnbox code {{ font-family: "JetBrains Mono", monospace; font-size: 12px; }}
+
   @media (max-width: 720px) {{
     .thesis, .ab {{ grid-template-columns: 1fr; }}
     table {{ min-width: 560px; }}
@@ -424,6 +481,128 @@ def build(real: dict, mock: dict) -> str:
       <span class="mono">0.8600</span>. Cosine mã hoá chủ đề, không mã hoá phủ định hay chủ thể —
       những khác biệt đó buộc phải đưa vào metadata.</p>
   </section>
+
+
+  <section>
+    <h2><span class="n">06</span>Hỏi thử kho tri thức</h2>
+    <p class="lede">Chạy trực tiếp <span class="mono">EmbeddingStore</span> và
+      <span class="mono">KnowledgeBaseAgent</span> trong <span class="mono">src/</span>,
+      chiến lược <span class="mono">FixedSizeChunker(300, 50)</span>.</p>
+
+    <div class="ask">
+      <p class="status"><span class="dot" id="dot"></span><span id="status">Đang kiểm tra server…</span></p>
+
+      <form class="ask-row" id="form">
+        <input type="text" id="cauhoi" autocomplete="off"
+               placeholder="Ví dụ: Bao lâu thì được yêu cầu trả hàng hoàn tiền?">
+        <select id="loc" aria-label="Lọc theo đối tượng">
+          <option value="">Không lọc</option>
+          <option value="buyer">audience = buyer</option>
+          <option value="seller">audience = seller</option>
+          <option value="both">audience = both</option>
+        </select>
+        <button type="submit" id="nut">Hỏi</button>
+      </form>
+
+      <div class="sugs" id="sugs"></div>
+      <div id="ketqua"></div>
+    </div>
+  </section>
+
+<script>
+(function () {{
+  var DUNG_SAN = {dung_san};
+  var online = false;
+  var dot = document.getElementById("dot");
+  var status = document.getElementById("status");
+  var form = document.getElementById("form");
+  var oCauHoi = document.getElementById("cauhoi");
+  var oLoc = document.getElementById("loc");
+  var nut = document.getElementById("nut");
+  var ketqua = document.getElementById("ketqua");
+
+  function esc(t) {{
+    var d = document.createElement("div");
+    d.textContent = t == null ? "" : String(t);
+    return d.innerHTML;
+  }}
+
+  DUNG_SAN.forEach(function (m) {{
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "sug";
+    b.textContent = m.cau_hoi.length > 66 ? m.cau_hoi.slice(0, 66) + "\u2026" : m.cau_hoi;
+    b.title = m.cau_hoi;
+    b.addEventListener("click", function () {{
+      oCauHoi.value = m.cau_hoi;
+      oLoc.value = m.loc ? "seller" : "";
+      if (online) form.requestSubmit(); else ve(m, true);
+    }});
+    document.getElementById("sugs").appendChild(b);
+  }});
+
+  fetch("/api/health").then(function (r) {{
+    return r.ok ? r.json() : Promise.reject(new Error("offline"));
+  }}).then(function (d) {{
+    online = true;
+    dot.className = "dot live";
+    status.textContent = "Server \u0111ang ch\u1ea1y \u00b7 " + d.chunks + " chunk \u00b7 " + d.chien_luoc;
+  }}).catch(function () {{
+    online = false;
+    dot.className = "dot off";
+    status.textContent = "Server ch\u01b0a ch\u1ea1y \u2014 b\u1ea5m c\u00e2u h\u1ecfi b\u00ean d\u01b0\u1edbi \u0111\u1ec3 xem k\u1ebft qu\u1ea3 \u0111\u00e3 l\u01b0u.";
+    nut.disabled = true;
+    oCauHoi.placeholder = "Ch\u1ea1y: python demo_server.py \u0111\u1ec3 h\u1ecfi c\u00e2u b\u1ea5t k\u1ef3";
+  }});
+
+  function ve(d, offline) {{
+    var h = "";
+    if (offline) {{
+      h += '<div class="warnbox">K\u1ebft qu\u1ea3 \u0111\u00e3 l\u01b0u t\u1eeb <code>ket_qua_benchmark.txt</code>. '
+         + 'Ch\u1ea1y <code>python demo_server.py</code> \u0111\u1ec3 h\u1ecfi c\u00e2u b\u1ea5t k\u1ef3.</div>';
+    }}
+    if (d.tra_loi) {{
+      h += '<div class="answer"><h4>C\u00e2u tr\u1ea3 l\u1eddi c\u1ee7a agent</h4><p>'
+         + esc(d.tra_loi) + "</p></div>";
+    }}
+    h += '<div class="hits">';
+    (d.top || []).forEach(function (t, i) {{
+      h += '<div class="hit"><div class="hit-top">'
+        + '<span class="rank">#' + (i + 1) + "</span>"
+        + (t.audience ? '<span class="aud aud-' + esc(t.audience) + '">' + esc(t.audience) + "</span>" : "")
+        + '<span class="mono doc-id">' + esc(t.doc_id) + "</span>"
+        + '<span class="mono" style="margin-left:auto;color:var(--ink-soft)">'
+        + Number(t.score).toFixed(4) + "</span></div>"
+        + "<p>" + esc(t.content) + "</p></div>";
+    }});
+    h += "</div>";
+    ketqua.innerHTML = h;
+  }}
+
+  form.addEventListener("submit", function (ev) {{
+    ev.preventDefault();
+    var cauHoi = oCauHoi.value.trim();
+    if (!cauHoi || !online) return;
+    nut.disabled = true;
+    nut.textContent = "\u0110ang h\u1ecfi\u2026";
+    ketqua.innerHTML = '<p class="note">\u0110ang embed c\u00e2u h\u1ecfi v\u00e0 truy xu\u1ea5t\u2026</p>';
+    fetch("/api/ask", {{
+      method: "POST",
+      headers: {{ "Content-Type": "application/json" }},
+      body: JSON.stringify({{ cau_hoi: cauHoi, loc: oLoc.value || null }})
+    }}).then(function (r) {{ return r.json(); }}).then(function (d) {{
+      if (d.loi) ketqua.innerHTML = '<div class="warnbox">' + esc(d.loi) + "</div>";
+      else ve(d, false);
+    }}).catch(function (err) {{
+      ketqua.innerHTML = '<div class="warnbox">Kh\u00f4ng g\u1ecdi \u0111\u01b0\u1ee3c server: '
+        + esc(err) + "</div>";
+    }}).finally(function () {{
+      nut.disabled = false;
+      nut.textContent = "H\u1ecfi";
+    }});
+  }});
+}})();
+</script>
 
   <footer>
     <p>Sinh bằng <span class="mono">python scripts/build_demo.py</span> từ
