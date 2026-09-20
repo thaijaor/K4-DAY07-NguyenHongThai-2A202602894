@@ -1,14 +1,21 @@
 ---
-doc_id: shopee-dong-goi-don-hoan-tra
+doc_id: "shopee-dong-goi-don-hoan-tra"
 title: "[Trả hàng/Hoàn tiền] Cách đóng gói đơn hàng hoàn trả"
-source_url: https://help.shopee.vn/portal/4/article/79508
-retrieved_at: 2026-09-20
-document_version: not-stated
-audience: buyer
-category: tra-hang-hoan-tien
-language: vi
+source_url: "https://help.shopee.vn/portal/4/article/79508"
+retrieved_at: "2026-09-20"
+document_version: "not-stated"
+audience: "buyer"
+category: "tra-hang-hoan-tien"
+language: "vi"
 ---
+
 # [Trả hàng/Hoàn tiền] Cách đóng gói đơn hàng hoàn trả
+
+[Trả hàng/ Hoàn tiền] Cách đóng gói đơn hàng hoàn trả | Shopee Trung tâm trợ giúp
+
+Xin chào, Shopee có thể giúp gì cho bạn?
+
+[Trả hàng/ Hoàn tiền] Cách đóng gói đơn hàng hoàn trả
 
 Đóng gói đơn hàng hoàn trả theo hướng dẫn của Shopee để đảm bảo an toàn cho sản phẩm bên trong tránh mất mát hoặc hư hỏng, giúp quá trình hoàn trả nhanh chóng, không bị từ chối.
 
@@ -53,17 +60,25 @@ Hộp vận chuyển
 
 Hộp nhà sản xuất
 
+·
+
 Là loại hộp trơn, thường làm bằng carton cứng.
 
  
+
+·
 
 Không in logo, hình ảnh hay thông tin sản phẩm.
 
  
 
+·
+
 Là hộp thiết kế bởi nhà sản xuất, thường có logo, hình ảnh minh họa, thông tin về sản phẩm (tên, thông số kỹ thuật, hướng dẫn sử dụng...).
 
  
+
+·
 
 Kích thước vừa khít với sản phẩm.
 
@@ -118,3 +133,11 @@ Chi tiết cân nặng và khối lượng của từng đơn vị vận chuyể
 Quy trình gửi trả hàng Cồng Kềnh tương tự như những sản phẩm khác:
 
 Xem hướng dẫn chi tiết Các phương thức gửi hàng hoàn trả và phí hoàn trả tại đây.
+
+ 
+
+Bạn có hài lòng với bài viết này?
+
+Hài lòng
+
+Không hài lòng

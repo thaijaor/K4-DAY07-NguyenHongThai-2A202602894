@@ -1,14 +1,21 @@
 ---
-doc_id: shopee-dieu-khoan-dich-vu
-title: Điều khoản Shopee
-source_url: https://help.shopee.vn/portal/4/article/77242
-retrieved_at: 2026-09-20
-document_version: not-stated
-audience: both
-category: dieu-khoan
-language: vi
+doc_id: "shopee-dieu-khoan-dich-vu"
+title: "Điều khoản Shopee"
+source_url: "https://help.shopee.vn/portal/4/article/77242"
+retrieved_at: "2026-09-20"
+document_version: "not-stated"
+audience: "both"
+category: "dieu-khoan"
+language: "vi"
 ---
+
 # Điều khoản Shopee
+
+Điều khoản Shopee | Shopee Trung tâm trợ giúp
+
+Xin chào, Shopee có thể giúp gì cho bạn?
+
+Điều khoản Shopee
 
 Điều khoản tổng quát
 
@@ -67,3 +74,9 @@ Chính sách chung về Mã ưu đãi Shopee
 Điều khoản Dịch vụ Shopee AI
 
 Điều khoản và điều kiện Dịch vụ Lắp đặt
+
+Bạn có hài lòng với bài viết này?
+
+Hài lòng
+
+Không hài lòng

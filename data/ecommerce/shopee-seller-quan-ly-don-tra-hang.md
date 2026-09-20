@@ -1,14 +1,21 @@
 ---
-doc_id: shopee-seller-quan-ly-don-tra-hang
-title: Quản lý đơn trả hàng hoàn tiền
-source_url: https://help.shopee.vn/portal/1/article/102521
-retrieved_at: 2026-09-20
-document_version: not-stated
-audience: seller
-category: tra-hang-hoan-tien
-language: vi
+doc_id: "shopee-seller-quan-ly-don-tra-hang"
+title: "Quản lý đơn trả hàng hoàn tiền"
+source_url: "https://help.shopee.vn/portal/1/article/102521"
+retrieved_at: "2026-09-20"
+document_version: "not-stated"
+audience: "seller"
+category: "tra-hang-hoan-tien"
+language: "vi"
 ---
+
 # Quản lý đơn trả hàng hoàn tiền
+
+Quản lý đơn trả hàng hoàn tiền | Shopee Trung tâm trợ giúp
+
+Xin chào, Shopee có thể giúp gì cho bạn?
+
+Quản lý đơn trả hàng hoàn tiền
 
 Quản lý đơn Trả hàng/Hoàn tiền tại Kênh Quản Lý Shop có những tính năng vượt trội như sau:
 
@@ -101,3 +108,9 @@ Chi phí khác (do hàng hư hỏng hoặc thất lạc)
 Đền bù từ Shopee (nếu có)
 
 Tại mục Nhật ký giao dịch, nhập ID đơn hàng để xem các giao dịch được ghi nhận cho đơn hàng đó
+
+Bạn có hài lòng với bài viết này?
+
+Hài lòng
+
+Không hài lòng

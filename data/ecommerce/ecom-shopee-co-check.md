@@ -1,14 +1,21 @@
 ---
-doc_id: ecom-shopee-co-check
-title: Chính sách đồng kiểm Shopee
-source_url: https://help.shopee.vn/portal/4/article/79262
-retrieved_at: 2026-09-20
-document_version: 2024-06-07
-audience: buyer
-category: help
-language: vi
+doc_id: "ecom-shopee-co-check"
+title: "Chính sách đồng kiểm Shopee"
+source_url: "https://help.shopee.vn/portal/4/article/79262"
+retrieved_at: "2026-09-20"
+document_version: "2024"
+audience: "buyer"
+category: "help"
+language: "vi"
 ---
+
 # Chính sách đồng kiểm Shopee
+
+[Vận chuyển] Dịch Vụ SPX Instant Trên Shopee Là Gì? | Shopee Trung tâm trợ giúp
+
+Xin chào, Shopee có thể giúp gì cho bạn?
+
+[Vận chuyển] Dịch Vụ SPX Instant Trên Shopee Là Gì?
 
 SPX Instant là dịch vụ giao hàng “ngay lập tức” được triển khai nhờ sự kết hợp giữa ShopeeFood và Shopee, đáp ứng mong muốn nhận hàng gấp của Người mua
 
@@ -102,3 +109,11 @@ Người mua cần đọc chính xác mã OTP để bưu tá nhập mã lên h�
  
 
 Email hỗ trợ:  cskh@support.shopeefood.vn
+
+ 
+
+Bạn có hài lòng với bài viết này?
+
+Hài lòng
+
+Không hài lòng

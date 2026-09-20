@@ -1,14 +1,21 @@
 ---
-doc_id: shopee-cam-nang-tra-hang-hoan-tien
+doc_id: "shopee-cam-nang-tra-hang-hoan-tien"
 title: "[Trả hàng/Hoàn tiền] Cẩm nang Trả hàng hoàn tiền"
-source_url: https://help.shopee.vn/portal/4/article/79258
-retrieved_at: 2026-09-20
-document_version: not-stated
-audience: buyer
-category: tra-hang-hoan-tien
-language: vi
+source_url: "https://help.shopee.vn/portal/4/article/79258"
+retrieved_at: "2026-09-20"
+document_version: "not-stated"
+audience: "buyer"
+category: "tra-hang-hoan-tien"
+language: "vi"
 ---
+
 # [Trả hàng/Hoàn tiền] Cẩm nang Trả hàng hoàn tiền
+
+[Trả hàng/Hoàn tiền] Cẩm nang Trả hàng hoàn tiền | Shopee Trung tâm trợ giúp
+
+Xin chào, Shopee có thể giúp gì cho bạn?
+
+[Trả hàng/Hoàn tiền] Cẩm nang Trả hàng hoàn tiền
 
 Gửi yêu cầu
 
@@ -81,3 +88,27 @@ Hoàn tiền
  
 
 Tham khảo thêm các câu hỏi thường gặp về Trả hàng/Hoàn tiền Shopee Mall trên Shopee dành cho Người mua.
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Bạn có hài lòng với bài viết này?
+
+Hài lòng
+
+Không hài lòng
