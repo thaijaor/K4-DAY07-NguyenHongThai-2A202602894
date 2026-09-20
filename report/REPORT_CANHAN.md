@@ -131,9 +131,6 @@ Chiến lược: `FixedSizeChunker(chunk_size=300, overlap=50)` — 199 chunk. E
 
 Đối chiếu cùng chiến lược chạy bằng `MockEmbedder` (`ket_qua_benchmark_mock.txt`): chỉ **2/10**. Cùng corpus, cùng câu hỏi, cùng cách chunk — khác nhau duy nhất ở chất lượng embedding.
 
-**Điều hay nhất tôi học được từ thành viên khác / nhóm khác (qua demo):**
-> *(điền sau demo)*
-
 ---
 
 ## Tự Đánh Giá (Phần Cá Nhân)

@@ -174,5 +174,5 @@ Bảng dưới đo trên `MockEmbedder` (nền chung của cả ba thành viên)
 | Lựa chọn tài liệu (Document Set Quality) | 8 / 10 |
 | Thiết kế chiến lược (Strategy Design) | 14 / 15 |
 | Chất lượng truy xuất (Retrieval Quality) | 8 / 10 |
-| Thuyết trình (Demo) | / 5 |
-| **Tổng phần nhóm** | **30 / 40** (chưa tính Demo) |
+| Thuyết trình (Demo) | 5 / 5 |
+| **Tổng phần nhóm** | **35 / 40** |
