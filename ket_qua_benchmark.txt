@@ -61,4 +61,4 @@ Query: Quy trình xử lý đơn trả hàng và quản lý hàng hoàn trả t�
 ================================================================================
 TỔNG KẾT ĐIỂM TRUY XUẤT (RETRIEVAL QUALITY): 9 / 10
 ================================================================================
-Cache embedding: 202 hit / 4 goi API moi
+Cache embedding: 206 hit / 0 goi API moi
