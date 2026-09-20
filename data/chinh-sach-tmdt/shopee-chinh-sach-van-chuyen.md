@@ -1,21 +1,14 @@
 ---
-doc_id: "shopee-chinh-sach-van-chuyen"
-title: "Chính sách vận chuyển Shopee"
-source_url: "https://help.shopee.vn/portal/4/article/77250"
-retrieved_at: "2026-09-20"
-document_version: "not-stated"
-audience: "buyer"
-category: "van-chuyen"
-language: "vi"
+doc_id: shopee-chinh-sach-van-chuyen
+title: Chính sách vận chuyển Shopee
+source_url: https://help.shopee.vn/portal/4/article/77250
+retrieved_at: 2026-09-20
+document_version: 2026-09-15
+audience: buyer
+category: van-chuyen
+language: vi
 ---
-
 # Chính sách vận chuyển Shopee
-
-CHÍNH SÁCH VẬN CHUYỂN SHOPEE | Shopee Trung tâm trợ giúp
-
-Xin chào, Shopee có thể giúp gì cho bạn?
-
-CHÍNH SÁCH VẬN CHUYỂN SHOPEE
 
 A. PHẠM VI VÀ ĐỐI TƯỢNG ÁP DỤNG
 
@@ -412,9 +405,3 @@ E.  CÁC KHUYẾN CÁO VỀ DỊCH VỤ VẬN CHUYỂN
 Chính Sách này được cập nhật và đăng tải ngày 15/9/2026, có hiệu lực thay thế các Chính sách vận chuyển liên quan được ban hành trước đây (nếu có) sau 05 (năm) ngày kể từ ngày đăng tải.
 
 Để tham khảo phiên bản trước của Chính Sách Vận Chuyển, vui lòng bấm vào ĐÂY.
-
-Bạn có hài lòng với bài viết này?
-
-Hài lòng
-
-Không hài lòng

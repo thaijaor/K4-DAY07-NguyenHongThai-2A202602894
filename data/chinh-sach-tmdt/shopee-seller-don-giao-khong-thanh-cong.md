@@ -1,21 +1,14 @@
 ---
-doc_id: "shopee-seller-don-giao-khong-thanh-cong"
-title: "Quản lý đơn hàng giao không thành công"
-source_url: "https://help.shopee.vn/portal/1/article/102523"
-retrieved_at: "2026-09-20"
-document_version: "not-stated"
-audience: "seller"
-category: "van-chuyen"
-language: "vi"
+doc_id: shopee-seller-don-giao-khong-thanh-cong
+title: Quản lý đơn hàng giao không thành công
+source_url: https://help.shopee.vn/portal/1/article/102523
+retrieved_at: 2026-09-20
+document_version: not-stated
+audience: seller
+category: van-chuyen
+language: vi
 ---
-
 # Quản lý đơn hàng giao không thành công
-
-Quản lý đơn hàng giao không thành công | Shopee Trung tâm trợ giúp
-
-Xin chào, Shopee có thể giúp gì cho bạn?
-
-Quản lý đơn hàng giao không thành công
 
 1. Giới thiệu tính năng theo dõi và xử lý các đơn giao không thành công
 
@@ -108,9 +101,3 @@ Chọn OK để đóng hộp thoại hoặc nhấn Xem các giao dịch để đ
 Để tìm chính xác giao dịch cần bấm hoàn tất, các shop có thể đối chiếu mã đơn hàng bằng cách di chuột vào cột chú thích.
 
 Thông tin chi phí thất thoát sẽ được ghi nhận dưới dạng chi phí khác của mục Kết Quả Kinh Doanh và Nhật Ký Giao Dịch.
-
-Bạn có hài lòng với bài viết này?
-
-Hài lòng
-
-Không hài lòng

@@ -1,21 +1,14 @@
 ---
-doc_id: "shopee-bang-chung-tra-hang"
+doc_id: shopee-bang-chung-tra-hang
 title: "[Trả hàng/Hoàn tiền] Hướng dẫn chuẩn bị bằng chứng khi yêu cầu Trả hàng/ Hoàn tiền"
-source_url: "https://help.shopee.vn/portal/4/article/79467"
-retrieved_at: "2026-09-20"
-document_version: "not-stated"
-audience: "buyer"
-category: "tra-hang-hoan-tien"
-language: "vi"
+source_url: https://help.shopee.vn/portal/4/article/79467
+retrieved_at: 2026-09-20
+document_version: not-stated
+audience: buyer
+category: tra-hang-hoan-tien
+language: vi
 ---
-
 # [Trả hàng/Hoàn tiền] Hướng dẫn chuẩn bị bằng chứng khi yêu cầu Trả hàng/ Hoàn tiền
-
-[Trả hàng/Hoàn tiền] Hướng dẫn chuẩn bị bằng chứng khi yêu cầu Trả hàng/ Hoàn tiền | Shopee Trung tâm trợ giúp
-
-Xin chào, Shopee có thể giúp gì cho bạn?
-
-[Trả hàng/Hoàn tiền] Hướng dẫn chuẩn bị bằng chứng khi yêu cầu Trả hàng/ Hoàn tiền
 
 Khi bạn cần gửi yêu cầu Trả hàng/Hoàn tiền trên Shopee, việc cung cấp đầy đủ và chính xác bằng chứng là rất quan trọng để đảm bảo yêu cầu của bạn được xử lý nhanh chóng. Tùy thuộc vào từng trường hợp, loại bằng chứng bạn cần chuẩn bị sẽ khác nhau.
 
@@ -92,13 +85,3 @@ Bằng chứng bổ sung: Nếu có, bạn có thể cung cấp thêm lịch s�
 Nếu Shopee cần thêm bằng chứng khác, bạn sẽ nhận được thông báo trong mục Thông báo > Cập nhật đơn hàng. Bạn cần bổ sung bằng chứng trong vòng 24 giờ. Sau thời gian này, Shopee sẽ chỉ xem xét dựa trên các bằng chứng đã có.
 
 5. Một số ví dụ minh họa về bằng chứng cần cung cấp
-
- 
-
- 
-
-Bạn có hài lòng với bài viết này?
-
-Hài lòng
-
-Không hài lòng
